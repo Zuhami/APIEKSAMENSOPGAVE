@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Alice Johnson",
+    "phone": "12345678",
+    "education": "Computer Science",
+    "skills": [
+      {
+        "name": "Java",
+        "category": "PROG_LANG",
+        "description": "Strongly typed backend language for scalable systems"
+      },
+      {
+        "name": "PostgreSQL",
+        "category": "DB",
+        "description": "Relational database with SQL and JSONB support"
+      }
+    ]
+  },
+  {
+    "name": "Bob Andersen",
+    "phone": "87654321",
+    "education": "Software Engineering",
+    "skills": [
+      {
+        "name": "Docker",
+        "category": "DEVOPS",
+        "description": "Containerization platform for consistent deployments"
+      },
+      {
+        "name": "JUnit",
+        "category": "TESTING",
+        "description": "Unit testing framework for Java applications"
+      }
+    ]
+  },
+  {
+    "name": "Clara Madsen",
+    "phone": "55512234",
+    "education": "Data Science",
+    "skills": [
+      {
+        "name": "Python",
+        "category": "PROG_LANG",
+        "description": "High-level scripting language for data analysis and automation"
+      },
+      {
+        "name": "TensorFlow",
+        "category": "DATA",
+        "description": "Deep learning framework for machine learning models"
+      }
+    ]
+  },
+  {
+    "name": "David Larsen",
+    "phone": "44556677",
+    "education": "Information Technology",
+    "skills": [
+      {
+        "name": "React",
+        "category": "FRONTEND",
+        "description": "JavaScript library for building UI components"
+      },
+      {
+        "name": "Spring Boot",
+        "category": "FRAMEWORK",
+        "description": "Java framework for REST APIs and microservices"
+      }
+    ]
+  }
+]

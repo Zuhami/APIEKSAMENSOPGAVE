@@ -1,0 +1,69 @@
+### A simple get request to the test endpoint. No need for login
+GET {{url}}/auth/test/
+
+### Create a new user - this one will only get a USER role by default
+POST {{url}}/auth/register/
+
+{
+    "username": "user",
+    "password": "test123"
+}
+
+###
+POST {{url}}/auth/login/
+
+{
+    "username": "user",
+    "password": "test123"
+}
+
+> {%
+    client.global.set("jwt_token", response.body.token);
+    console.log("JWT Token:", client.global.get("jwt_token"));
+%}
+
+### Add admin role to user
+POST {{url}}/auth/user/addrole/
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+    "role": "admin"
+}
+### 🔹 GET all candidates
+GET http://localhost:7070/api/candidates
+Accept: application/json
+
+
+### 🔹 GET one candidate by ID
+GET http://localhost:7070/api/candidates/1
+Accept: application/json
+
+
+### 🔹 CREATE a new candidate
+POST http://localhost:7070/api/candidates
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Emma Nielsen",
+  "education": "Computer Science",
+  "phone": "+4521123344"
+}
+
+
+### 🔹 UPDATE a candidate
+PUT http://localhost:7070/api/candidates/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Emma M. Nielsen",
+  "education": "Data Science",
+  "phone": "+4521987654"
+}
+
+
+### 🔹 DELETE a candidate
+DELETE http://localhost:7070/api/candidates/1
+Accept: application/json

@@ -17,15 +17,21 @@ public class Populate {
 
     public static void populateDatabase(EntityManagerFactory emf){
 
-        List<Dog> dogs = loadJsonFile("/Dog.json", new TypeReference<List<Dog>>() {});
+        List<Candidate> candidates = loadJsonFile("/Candidate.json", new TypeReference<List<Candidate>>() {});
+
 
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
 
             //persist all actions
+            Set<Skill> uniqueSkills = candidates.stream()
+                    .flatMap(c -> c.getSkills().stream())
+                    .collect(Collectors.toSet());
+
+            uniqueSkills.forEach(em::persist);
 
 
-            dogs.forEach(em::persist);
+            candidates.forEach(em::persist);
 
 
 
