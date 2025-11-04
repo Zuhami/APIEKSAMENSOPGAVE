@@ -11,11 +11,14 @@ public class CandidateRoutes {
 
     protected EndpointGroup getRoutes() {
         return () -> {
-            post("/", CandidateController::create);    // create new shop (ADMIN role required)
-            get("/", CandidateController::getAll);                // get all shops
-            get("/{id}", CandidateController::getById);               // get shop by id
-            put("/{id}", CandidateController::update);             // update shop by id (ADMIN role required)
-            delete("/{id}", CandidateController::delete);          // delete shop by id (ADMIN role required)
+            post("/", CandidateController::create);
+            get("/", CandidateController::getAll);
+            get("/{id}", CandidateController::getById);
+            put("/{id}", CandidateController::update);
+            delete("/{id}", CandidateController::delete);
+            put("/{candidateId}/skills/{skillId}", CandidateController::AddSkillToCandidate);
+            get("/category/{category}", CandidateController::getByCategory);
+
         };
     }
 }

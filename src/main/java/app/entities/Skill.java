@@ -2,10 +2,7 @@ package app.entities;
 
 import app.enums.SkillCategory;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "skills")
@@ -32,8 +30,6 @@ public class Skill {
     @ManyToMany(mappedBy = "skills")
     private Set<Candidate> candidates = new HashSet<>();
 
-    public Skill() {
-    }
 
     public Skill(String name, SkillCategory category, String description) {
         this.name = name;

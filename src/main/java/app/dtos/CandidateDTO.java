@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor   // Needed by Jackson
-@AllArgsConstructor // Full constructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class CandidateDTO {
     private int id;
     private String name;
@@ -21,7 +21,7 @@ public class CandidateDTO {
         this.phone = candidate.getPhone();
     }
 
-    // Convert from DTO to Entity
+
     public Candidate toEntity() {
         Candidate candidate = new Candidate();
         candidate.setId(this.id);

@@ -1,46 +1,18 @@
-### A simple get request to the test endpoint. No need for login
-GET {{url}}/auth/test/
 
-### Create a new user - this one will only get a USER role by default
-POST {{url}}/auth/register/
-
-{
-    "username": "user",
-    "password": "test123"
-}
-
-###
-POST {{url}}/auth/login/
-
-{
-    "username": "user",
-    "password": "test123"
-}
-
-> {%
-    client.global.set("jwt_token", response.body.token);
-    console.log("JWT Token:", client.global.get("jwt_token"));
-%}
-
-### Add admin role to user
-POST {{url}}/auth/user/addrole/
-Accept: application/json
-Authorization: Bearer {{jwt_token}}
-
-{
-    "role": "admin"
-}
-### 🔹 GET all candidates
+### GET all candidates
 GET http://localhost:7070/api/candidates
 Accept: application/json
 
+### GET candidates by category
+GET http://localhost:7070/api/candidates/category/FRONTEND
+Accept: application/json
 
-### 🔹 GET one candidate by ID
-GET http://localhost:7070/api/candidates/1
+### GET one candidate by ID
+GET http://localhost:7070/api/candidates/5
 Accept: application/json
 
 
-### 🔹 CREATE a new candidate
+### CREATE a new candidate
 POST http://localhost:7070/api/candidates
 Content-Type: application/json
 Accept: application/json
@@ -52,7 +24,7 @@ Accept: application/json
 }
 
 
-### 🔹 UPDATE a candidate
+### UPDATE a candidate
 PUT http://localhost:7070/api/candidates/1
 Content-Type: application/json
 Accept: application/json
@@ -64,6 +36,38 @@ Accept: application/json
 }
 
 
-### 🔹 DELETE a candidate
+###DELETE a candidate
 DELETE http://localhost:7070/api/candidates/1
 Accept: application/json
+
+### CREATE NEW SKILL
+POST http://localhost:7070/api/skills
+Content-Type: application/json
+
+{
+  "name": "SQL",
+  "description": "Containerization technology",
+  "category": "DEVOPS"
+}
+### READ ALL SKILLS
+GET http://localhost:7070/api/skills
+
+### READ BY ID
+GET http://localhost:7070/api/skills/1
+
+### UPDATE SKILL
+PUT http://localhost:7070/api/skills/1
+Content-Type: application/json
+
+{
+  "name": "Kubernetes",
+  "description": "Container orchestration",
+  "category": "DEVOPS"
+}
+
+### DELETE SKILL
+DELETE http://localhost:7070/api/skills/1
+
+### ADD SKILL TO CANDIDATE
+PUT http://localhost:7070/api/candidates/5/skills/9
+

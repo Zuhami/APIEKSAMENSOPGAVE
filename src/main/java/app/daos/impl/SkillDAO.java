@@ -103,10 +103,16 @@ public class SkillDAO implements IDAO<SkillDTO, Integer> {
     public void delete(Integer id) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
+
             Skill skill = em.find(Skill.class, id);
             if (skill != null) {
+                // 🔹 Unlink this skill from all candidates first
+                skill.getCandidates().forEach(candidate -> candidate.getSkills().remove(skill));
+                em.flush(); // Apply unlink before deletion
+
                 em.remove(skill);
             }
+
             em.getTransaction().commit();
         }
     }

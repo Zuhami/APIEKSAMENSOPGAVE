@@ -1,6 +1,7 @@
 package app;
 
 import app.config.ApplicationConfig;
+import app.config.Populate;
 import app.routes.Routes;
 import io.javalin.Javalin;
 

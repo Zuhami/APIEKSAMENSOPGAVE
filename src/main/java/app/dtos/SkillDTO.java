@@ -16,6 +16,7 @@ public class SkillDTO {
     private SkillCategory category;
     private String description;
 
+
     public SkillDTO(Skill skill) {
         this.id = skill.getId();
         this.name = skill.getName();

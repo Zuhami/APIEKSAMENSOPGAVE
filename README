@@ -1,0 +1,68 @@
+Author: Ayman Chaykh
+Datamatiker, Semester 3 – CphBusiness
+
+■ Project Overview
+A RESTful backend system for managing candidates and skills, built with Java 17, Javalin 6,
+Hibernate (JPA), PostgreSQL, Jackson, and Lombok. Implements CRUD operations and a
+many-to-many relationship between candidates and skills.
+
+■ Completed User Stories
+US-1: Hibernate setup with entities and populator  - Done
+US-2: DAO layer with CRUD (Candidate & Skill) - Done
+US-3: REST API CRUD endpoints - Done
+US-4: Filter candidates by skill category - Done
+US-5–8: External API, reports, tests, security – Not implemented
+
+■ Architecture
+MVC + DAO + DTO pattern:
+config/ – Hibernate & Application setup
+controllers/ – REST controllers
+daos/ – CRUD logic using JPA
+dtos/ – Data Transfer Objects
+entities/ – Candidate, Skill
+routes/ – Javalin route setup
+Main.java – Starts server
+
+■ REST API Endpoints
+Base URL: http://localhost:7070/api
+
+GET /candidates – Get all candidates
+
+GET /candidates/{id} – Get candidate by ID
+
+POST /candidates – Create candidate
+
+PUT /candidates/{id} – Update candidate
+
+DELETE /candidates/{id} – Delete candidate
+
+PUT /candidates/{candidateId}/skills/{skillId} – Link skill to candidate
+
+GET /candidates?category={category} – Filter candidates by category
+
+GET /skills – Get all skills
+
+POST /skills – Create skill
+
+PUT /skills/{id} – Update skill
+
+DELETE /skills/{id} – Delete skill
+
+
+■ Database
+PostgreSQL database: candidate_matcher
+Many-to-many relation between Candidate and Skill.
+Auto-creates tables with hibernate.hbm2ddl.auto=create.
+Populated via Populate class (.
+
+■■ How to Run
+1. Ensure PostgreSQL is running.
+2. Run Populate.main() to insert data.
+3. Run Main.main() to start the server.
+4. Visit http://localhost:7070/api/candidates
+5. start using the endpoints in dev.http in ressources in the folder http
+
+■ Summary
+Fulfills User Stories 1–4 fully.
+Clean modular architecture with DAO and DTO layers.
+Ready for future extensions such as external APIs, JWT security, and testing.

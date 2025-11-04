@@ -23,7 +23,7 @@ public class Populate {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
 
-            //persist all actions
+
             Set<Skill> uniqueSkills = candidates.stream()
                     .flatMap(c -> c.getSkills().stream())
                     .collect(Collectors.toSet());

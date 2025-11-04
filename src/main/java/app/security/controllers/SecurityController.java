@@ -29,10 +29,7 @@ import java.text.ParseException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Purpose: To handle security in the API
- * Author: Thomas Hartmann
- */
+
 public class SecurityController implements ISecurityController {
     ObjectMapper objectMapper = new ObjectMapper();
     ITokenSecurity tokenSecurity = new TokenSecurity();
@@ -122,7 +119,7 @@ public class SecurityController implements ISecurityController {
     }
 
     @Override
-    // Check if the user's roles contain any of the allowed roles
+
     public boolean authorize(UserDTO user, Set<RouteRole> allowedRoles) {
         if (user == null) {
             throw new UnauthorizedResponse("You need to log in, dude!");
@@ -179,8 +176,6 @@ public class SecurityController implements ISecurityController {
         return (ctx) -> {
             ObjectNode returnObject = objectMapper.createObjectNode();
             try {
-                // get the role from the body. the json is {"role": "manager"}.
-                // We need to get the role from the body and the username from the token
                 String newRole = ctx.bodyAsClass(ObjectNode.class).get("role").asText();
                 UserDTO user = ctx.attribute("user");
                 User updatedUser = securityDAO.addRole(user, newRole);
@@ -191,7 +186,7 @@ public class SecurityController implements ISecurityController {
         };
     }
 
-    // Health check for the API. Used in deployment
+
     public void healthCheck(@NotNull Context ctx) {
         ctx.status(200).json("{\"msg\": \"API is up and running\"}");
     }

@@ -64,7 +64,7 @@ public class CandidateDAO implements IDAO<CandidateDTO, Integer> {
             em.persist(candidate);
             em.getTransaction().commit();
 
-            // Return DTO with new ID
+
             return new CandidateDTO(
                     candidate.getId(),
                     candidate.getName(),
